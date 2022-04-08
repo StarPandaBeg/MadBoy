@@ -4,9 +4,7 @@ load_paths()
 configure_logger()
 
 from update import Update
-v = Update().is_update_required()
-print(v)
-exit()
+Update().auto_update()
 
 from app import App
 App().run()

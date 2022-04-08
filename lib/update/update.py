@@ -6,7 +6,7 @@ from func import *
 
 ARCHIVE_URL = "https://github.com/StarPandaBeg/MadBoyX/archive/master.zip"
 VERSION_URL = "https://raw.githubusercontent.com/StarPandaBeg/MadBoyX/master/VERSION"
-MARKER_URL = "https://chaostech.ru/123.php"
+# MARKER_URL = "https://chaostech.ru/123.php"
 
 class Update:
 
@@ -29,14 +29,31 @@ class Update:
         except:
             return None
 
-    def is_update_required(self):
-        local = self.current_version()
-        remote = self.remote_version()
+    def is_update_required(self, local, remote):
         local_v = semantic_to_int(local) if local else -1
         remote_v = semantic_to_int(remote) if remote else -2
         return (local_v < remote_v)
 
-    def auto_update(self):
+    def update(self):
         pass
+
+    def auto_update(self):
+        local = self.current_version()
+        remote = self.remote_version()
+
+        logging.info(f"Current version: {local}")
+        logging.info(f"Remote version: {remote}")
+
+        if self.is_update_required(local, remote):
+            logging.info("Starting update...")
+
+            with open("UPDATE_IN_PROGRESS", 'w') as f:
+                pass
+            self.update()
+            os.remove("UPDATE_IN_PROGRESS")
+            
+            logging.info(f"Restarting script...")
+            os.system(f"run.bat")
+            exit()
 
     
