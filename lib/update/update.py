@@ -6,7 +6,7 @@ import urllib.request
 from func import *
 from update_func import *
 
-EXCEPT = [".git", "config.ini", "newver", "old", ".vscode"]
+EXCEPT = [".git", "config.ini", "newver", "old", ".vscode", "run.bat", "restart.bat"]
 
 class Update:
 
@@ -41,9 +41,10 @@ class Update:
                 return False
             rm_if_exists("old", True)
             copy_current("old/")
-            # subprocess.check_call([sys.executable, "-m", "pip", "install", "-r" "newver/requirements.txt"])
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "-r" "newver/requirements.txt"])
             clear_dir(os.getcwd(), EXCEPT)
             copy_tree("newver", os.getcwd())
+            rm_if_exists("newver", True)
         except Exception as e:
             logging.error("Error during update")
             logging.exception(e)
@@ -66,5 +67,4 @@ class Update:
             logging.info(f"Restarting script...")
             os.system(f"run.bat")
             exit()
-
     
