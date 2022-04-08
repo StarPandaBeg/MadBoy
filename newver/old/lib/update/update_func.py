@@ -40,4 +40,4 @@ def clear_dir(dest, except_ = []):
     for i in os.listdir(dest):
         if i in except_:
             continue
-        rm_if_exists(i, os.path.isdir(dest))
+        rm_if_exists(i, os.path.isdir(i))

@@ -1,7 +1,6 @@
 import logging
 import os
 import random
-import shutil
 import sys
 import string
 
@@ -41,10 +40,3 @@ def semantic_to_int(version):
     l.reverse()
     version = sum(x * (100 ** i) for i, x in enumerate(l))
     return version
-
-def rm_if_exists(path, tree=False):
-    if os.path.exists(path):
-        if tree:
-            shutil.rmtree(path)
-        else:
-            os.remove(path)
