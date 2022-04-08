@@ -62,7 +62,6 @@ class Update:
             with open("UPDATE_IN_PROGRESS", 'w') as f:
                 pass
             self.update()
-            os.remove("UPDATE_IN_PROGRESS")
             
             logging.info(f"Restarting script...")
             os.system(f"run.bat")
