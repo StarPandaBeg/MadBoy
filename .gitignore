@@ -1,4 +1,7 @@
 __pycache__/
 .vscode/
+newver/
+old/
+TMP
 *.ini
 *.db
