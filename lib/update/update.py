@@ -10,6 +10,11 @@ EXCEPT = [".git", "config.ini", "newver", "old", ".vscode", "run.bat", "restart.
 
 class Update:
 
+    def __init__(self) -> None:
+        opener = urllib.request.build_opener()
+        opener.addheaders = [('User-agent', 'Mozilla/5.0'), ('Pragma', 'nocache')]
+        urllib.request.install_opener(opener)
+
     def current_version(self):
         if (os.path.exists("VERSION")):
             with open("VERSION", 'r') as f:
