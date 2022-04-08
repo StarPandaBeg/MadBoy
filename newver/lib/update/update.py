@@ -1,12 +1,12 @@
-import subprocess
 import logging
 import os
 import urllib.request
 
 from func import *
-from update_func import *
 
-EXCEPT = [".git", "config.ini", "newver", "old", ".vscode"]
+ARCHIVE_URL = "https://github.com/StarPandaBeg/MadBoyX/archive/master.zip"
+VERSION_URL = "https://raw.githubusercontent.com/StarPandaBeg/MadBoyX/master/VERSION"
+# MARKER_URL = "https://chaostech.ru/123.php"
 
 class Update:
 
@@ -35,19 +35,7 @@ class Update:
         return (local_v < remote_v)
 
     def update(self):
-        try:
-            change_perms(os.getcwd())
-            if not download_remote("newver"):
-                return False
-            rm_if_exists("old", True)
-            copy_current("old/")
-            # subprocess.check_call([sys.executable, "-m", "pip", "install", "-r" "newver/requirements.txt"])
-            clear_dir(os.getcwd(), EXCEPT)
-            copy_tree("newver", os.getcwd())
-        except Exception as e:
-            logging.error("Error during update")
-            logging.exception(e)
-            return False
+        pass
 
     def auto_update(self):
         local = self.current_version()
