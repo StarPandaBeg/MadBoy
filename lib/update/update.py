@@ -6,7 +6,7 @@ import urllib.request
 from func import *
 from update_func import *
 
-EXCEPT = [".git", "config.ini", "newver", "old", ".vscode", "run.bat", "restart.bat"]
+EXCEPT = [".git", "config.ini", "newver", "old", ".vscode", "run.bat", "restart.bat", "python"]
 
 class Update:
 
