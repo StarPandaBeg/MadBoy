@@ -8,8 +8,8 @@ import zipfile
 
 from func import rm_if_exists
 
-ARCHIVE_URL = "https://github.com/StarPandaBeg/MadBoyX/archive/master.zip"
-VERSION_URL = "https://raw.githubusercontent.com/StarPandaBeg/MadBoyX/master/VERSION"
+ARCHIVE_URL = "https://github.com/StarPandaBeg/MadBoy/archive/master.zip"
+VERSION_URL = "https://raw.githubusercontent.com/StarPandaBeg/MadBoy/master/VERSION"
 
 def change_perms(d):
     for root, dirs, files in os.walk(d):  
@@ -26,8 +26,8 @@ def download_remote(dest):
     z = zipfile.ZipFile(path)
     z.extractall(path=dest)
 
-    copy_tree(dest+"/MadBoyX-master", dest)
-    rm_if_exists(dest+"/MadBoyX-master", True)
+    copy_tree(dest+"/MadBoy-master", dest)
+    rm_if_exists(dest+"/MadBoy-master", True)
     return True
 
 def copy_current(dest):
