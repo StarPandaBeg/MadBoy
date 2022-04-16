@@ -1,3 +1,5 @@
+import subprocess
+import sys
 from modules.basemodule import BaseModule
 
 import os
@@ -16,7 +18,12 @@ class ProgramModule(BaseModule):
         command = topic[0] if len(topic) > 0 else None
 
         if (command == "restart"):
-            pass# os.system("restart.bat")
+            os.startfile("restart.vbs")
+            return "ok"
+        elif (command == "restartinstall"):
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "-r" "requirements.txt"])
+            os.startfile("restart.vbs")
+            return "ok"
         elif (command == "about"):
             with open("VERSION") as f:
                 version = f.read()
@@ -24,6 +31,7 @@ class ProgramModule(BaseModule):
             return {"version": version}
         elif (command == "force_update"):
             os.remove("VERSION")
+            return "ok"
 
 
     
